@@ -1,0 +1,19 @@
+name: Deploy WordPress
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and run Docker container
+        run: |
+          docker build -t wordpress-app .
+          docker run -d -p 8080:80 wordpress-app
