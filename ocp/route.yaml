@@ -1,0 +1,15 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: leutrim-lernia-app
+spec:
+  host: leutrim-lernia-app.apps.cluster5.karoshi.se
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: leutrim-lernia-app
+    weight: 100
+  wildcardPolicy: None
+
